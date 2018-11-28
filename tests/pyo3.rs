@@ -50,7 +50,7 @@ fn _test_pyo3(py: Python, x: Array1<f32>) -> PyResult<Array1<f32>> {
     Ok(py_x.to_owned_array())
 }
 
-fn _test(size: usize) -> Result<(),()> {
+fn _test(size: usize) {
     let gil = Python::acquire_gil();
 
     let mut x = Array1::random(size, F32(Normal::new(-1., 1.)));
@@ -63,47 +63,46 @@ fn _test(size: usize) -> Result<(),()> {
     .unwrap();
 
     x.mapv_inplace(f32::exp);
-    assert_close(x.as_slice().unwrap(), &py_x.as_slice().unwrap(), 1e-6.into());
-    Ok(())
+    assert_close(&x.as_slice().unwrap(), &py_x.as_slice().unwrap(), 1e-6.into());
 }
 
 #[test]
 fn test_1() {
-    _test(10).unwrap()
+    _test(1)
 }
 #[test]
 fn test_2() {
-    _test(100).unwrap()
+    _test(1)
 }
 #[test]
 fn test_3() {
-    _test(100).unwrap()
+    _test(1)
 }
 #[test]
 fn test_4() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_5() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_6() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_7() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_8() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_9() {
-    _test(1000).unwrap()
+    _test(1)
 }
 #[test]
 fn test_10() {
-    _test(1000).unwrap()
+    _test(1)
 }
